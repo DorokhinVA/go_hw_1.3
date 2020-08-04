@@ -37,12 +37,15 @@ func LastNTransactions(card *Card, n int) []Transaction {
 		resultLength = n
 	}
 
-	tmp := make([]Transaction, resultLength)
+	tmp := make([]Transaction, len(card.Transactions))
+	copy(tmp, card.Transactions)
+
+	result := make([]Transaction, resultLength)
 	for index := 0; index < resultLength; index++ {
-		tmp[index] = card.Transactions[len(card.Transactions)-index-1]
+		result[index] = tmp[len(card.Transactions)-index-1]
 	}
 
-	return tmp
+	return result
 }
 
 func contains(slice []string, element string) bool {
