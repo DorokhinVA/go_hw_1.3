@@ -62,4 +62,9 @@ func main() {
 
 	fmt.Println("Exist code: ", card.TranslateMCC(master.Transactions[0].MCC))
 	fmt.Println("Not exist code: ", card.TranslateMCC("2133"))
+
+	fmt.Println("Last 2 transactions: ", card.LastNTransactions(&master, 2))
+	fmt.Println("Last 2 transactions: ", len(card.LastNTransactions(&master, 2)))
+	fmt.Println("Last 4 transactions because arg bigger then slice len: ", card.LastNTransactions(&master, 9))
+	fmt.Println("Last 4 transactions because arg bigger then slice len: ", len(card.LastNTransactions(&master, 9)))
 }

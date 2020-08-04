@@ -29,6 +29,21 @@ func SumByMCC(transactions []Transaction, mcc []string) int64 {
 	}
 	return result
 }
+func LastNTransactions(card *Card, n int) []Transaction {
+	var resultLength int
+	if len(card.Transactions) < n {
+		resultLength = len(card.Transactions)
+	} else {
+		resultLength = n
+	}
+
+	tmp := make([]Transaction, resultLength)
+	for index := 0; index < resultLength; index++ {
+		tmp[index] = card.Transactions[len(card.Transactions)-index-1]
+	}
+
+	return tmp
+}
 
 func contains(slice []string, element string) bool {
 	for _, item := range slice {
