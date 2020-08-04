@@ -35,12 +35,12 @@ func main() {
 		Type:   card.WITHDRAW,
 	}
 	master := card.Card{
-		Id:       1,
-		Issuer:   "MasterCard",
-		Balance:  100_000_00,
-		Currency: "RUB",
-		Number:   "0001",
-		Icon:     "https://...",
+		Id:           1,
+		Issuer:       "MasterCard",
+		Balance:      100_000_00,
+		Currency:     "RUB",
+		Number:       "0001",
+		Icon:         "https://...",
 		Transactions: []card.Transaction{firstTransaction, secondTransaction, thirdTransaction},
 	}
 	fmt.Println(master)
@@ -59,4 +59,7 @@ func main() {
 	sumByMCC := card.SumByMCC(master.Transactions, []string{"5812"})
 
 	fmt.Println("Sum by MCC: ", sumByMCC)
+
+	fmt.Println("Exist code: ", card.TranslateMCC(master.Transactions[0].MCC))
+	fmt.Println("Not exist code: ", card.TranslateMCC("2133"))
 }
